@@ -1,9 +1,9 @@
 ﻿using NewsPagesLib.GlobalConstants;
 using System.ComponentModel.DataAnnotations;
 
-namespace NewsPagesLib
+namespace NewsPagesLib.Tables
 {
-    public class NewsPageInfo
+    public class NewsPageInfo : ITableRecord
     {
         [Key]
         public int Id { get; set; }
