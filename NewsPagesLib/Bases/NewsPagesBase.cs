@@ -13,18 +13,18 @@ namespace NewsPagesLib.Bases
 
         public void Add(NewsPageInfo entity)
         {
-            _newsPages.Add(entity);
+            entity.TryMakeOperation(() => _newsPages.Add(entity));
         }
 
         public void Remove(NewsPageInfo entity)
         {
-            _newsPages.Remove(entity);
+            entity.TryMakeOperation(() => _newsPages.Remove(entity));
         }
 
         public void Update(NewsPageInfo oldData, NewsPageInfo newData)
         {
-            _newsPages.Remove(oldData);
-            _newsPages.Add(newData);
+            oldData.TryMakeOperation(() => _newsPages.Remove(oldData));
+            newData.TryMakeOperation(() => _newsPages.Remove(newData));
         }
     }
 }

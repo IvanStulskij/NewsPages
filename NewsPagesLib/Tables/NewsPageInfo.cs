@@ -20,5 +20,13 @@ namespace NewsPagesLib.Tables
         public string TextHTML { get; set; }
 
         public string Text { get; set; }
+
+        public void TryMakeOperation(Action action)
+        {
+            if (this != null)
+            {
+                action.Invoke();
+            }
+        }
     }
 }
