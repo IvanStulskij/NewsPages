@@ -1,4 +1,6 @@
 ﻿using NewsPagesLib.GlobalConstants;
+using Pullenti;
+using Pullenti.Ner;
 using System.ComponentModel.DataAnnotations;
 
 namespace NewsPagesLib.Tables
@@ -26,6 +28,17 @@ namespace NewsPagesLib.Tables
             if (this != null)
             {
                 action.Invoke();
+            }
+        }
+
+        public IEnumerable<Referent> GetEntities()
+        {
+            Sdk.InitializeAll();
+
+            using (Processor processor = ProcessorService.CreateProcessor())
+            {
+                AnalysisResult analysisResult = processor.Process(new SourceOfAnalysis(Text));
+                return analysisResult.Entities;
             }
         }
     }

@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="Pullenti.Net">
+      <HintPath>..\..\..\PullentiCSharp\Pullenti\bin\Debug\Pullenti.Net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
