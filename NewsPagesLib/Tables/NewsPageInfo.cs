@@ -2,6 +2,7 @@
 using Pullenti;
 using Pullenti.Ner;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace NewsPagesLib.Tables
 {
@@ -40,6 +41,19 @@ namespace NewsPagesLib.Tables
                 AnalysisResult analysisResult = processor.Process(new SourceOfAnalysis(Text));
                 return analysisResult.Entities;
             }
+        }
+
+        /// <summary>
+        /// Finds by word or word parts
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public IEnumerable<string> FindByWord(string value)
+        {
+            var regex = new Regex($@"(\w*){value}(\w*)");
+
+            return regex.Matches(Text.ToLower())
+                .Select(match => match.Value);
         }
     }
 }
