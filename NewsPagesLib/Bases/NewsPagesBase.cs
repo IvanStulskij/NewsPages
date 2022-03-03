@@ -3,26 +3,26 @@ using Pullenti.Ner;
 
 namespace NewsPagesLib.Bases
 {
-    public class NewsPagesBase : IBaseTable<NewsPageInfo>
+    public class NewsPagesBase : IBaseTable<NewsPagesInfo>
     {
-        private readonly ICollection<NewsPageInfo> _newsPages;
+        private readonly ICollection<NewsPagesInfo> _newsPages;
 
-        public NewsPagesBase(ICollection<NewsPageInfo> newsPages)
+        public NewsPagesBase(ICollection<NewsPagesInfo> newsPages)
         {
             _newsPages = newsPages;
         }
 
-        public void Add(NewsPageInfo entity)
+        public void Add(NewsPagesInfo entity)
         {
             entity.TryMakeOperation(() => _newsPages.Add(entity));
         }
 
-        public void Remove(NewsPageInfo entity)
+        public void Remove(NewsPagesInfo entity)
         {
             entity.TryMakeOperation(() => _newsPages.Remove(entity));
         }
 
-        public void Update(NewsPageInfo oldData, NewsPageInfo newData)
+        public void Update(NewsPagesInfo oldData, NewsPagesInfo newData)
         {
             oldData.TryMakeOperation(() => _newsPages.Remove(oldData));
             newData.TryMakeOperation(() => _newsPages.Remove(newData));

@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace NewsPagesLib.Tables
 {
-    public class NewsPageInfo : ITableRecord
+    public class NewsPagesInfo : ITableRecord
     {
         [Key]
         public int Id { get; set; }
@@ -20,7 +20,7 @@ namespace NewsPagesLib.Tables
 
         public DateOnly Date { get; set; }
 
-        public string TextHTML { get; set; }
+        public string Text_html { get; set; }
 
         public string Text { get; set; }
 
