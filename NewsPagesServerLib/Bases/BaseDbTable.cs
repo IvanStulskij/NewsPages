@@ -11,16 +11,16 @@ namespace NewsPagesServerLib.Bases
             _connection = connection;
         }
 
-        public virtual void SelectAll()
+        public virtual IEnumerable<T> SelectAll()
         {
-            _connection.DbConnection.Select<T>();
+            return _connection.DbConnection.Select<T>();
         }
 
         public virtual void Insert(T value)
         {
             if (value != null)
             {
-                _connection.DbConnection.Insert(value);
+                _connection.DbConnection.Insert(value, selectIdentity: true);
             }
         }
         
@@ -45,7 +45,8 @@ namespace NewsPagesServerLib.Bases
             if ((oldData != null) && (newData != null))
             {
                 _connection.DbConnection.Delete(oldData);
-                _connection.DbConnection.Insert(newData);
+                _connection.DbConnection.Insert(newData, true);
+                
             }
         }
 

@@ -18,7 +18,7 @@ namespace NewsPagesLib.Tables
         [StringLength(Sizes.StringsSize, ErrorMessage = ErrorMessages.BigLengthError)]
         public string URL { get; set; }
 
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; }
 
         public string Text_html { get; set; }
 

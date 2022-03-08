@@ -5,34 +5,39 @@ namespace NewsPagesLib.Bases
 {
     public class NewsPagesBase : IBaseTable<NewsPagesInfo>
     {
-        private readonly ICollection<NewsPagesInfo> _newsPages;
+        public ICollection<NewsPagesInfo> NewsPages { get; }
 
         public NewsPagesBase(ICollection<NewsPagesInfo> newsPages)
         {
-            _newsPages = newsPages;
+            NewsPages = newsPages;
+        }
+
+        public NewsPagesInfo GetById(int id)
+        {
+            return NewsPages.SingleOrDefault(newsPage => newsPage.Id == id);
         }
 
         public void Add(NewsPagesInfo entity)
         {
-            entity.TryMakeOperation(() => _newsPages.Add(entity));
+            entity.TryMakeOperation(() => NewsPages.Add(entity));
         }
 
         public void Remove(NewsPagesInfo entity)
         {
-            entity.TryMakeOperation(() => _newsPages.Remove(entity));
+            entity.TryMakeOperation(() => NewsPages.Remove(entity));
         }
 
         public void Update(NewsPagesInfo oldData, NewsPagesInfo newData)
         {
-            oldData.TryMakeOperation(() => _newsPages.Remove(oldData));
-            newData.TryMakeOperation(() => _newsPages.Remove(newData));
+            oldData.TryMakeOperation(() => NewsPages.Remove(oldData));
+            newData.TryMakeOperation(() => NewsPages.Remove(newData));
         }
 
         public ICollection<string> FindByEntitiesNames(IEnumerable<string> textAttributes)
         {
             ICollection<string> foundEntites = new List<string>();
 
-            foreach (var newsPage in _newsPages)
+            foreach (var newsPage in NewsPages)
             {
                 var entities = newsPage.GetEntities();
 
