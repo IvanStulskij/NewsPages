@@ -21,9 +21,6 @@ namespace NewsPagesServerLib
 
 
             return result;
-            /*Console.WriteLine(result.Content.Text);
-            Console.WriteLine("End");
-            Console.WriteLine(result.AngleSharpHtmlDocument.Title);*/
         }
     }
 }
