@@ -12,27 +12,28 @@ namespace NewsPagesClientApp.Controllers
     {
         private readonly ILogger<NewsPagesController> _logger;
         private readonly NewsPagesBase _newsPagesBase;
+        private readonly NewsPagesDbBase _newsPagesDbBase;
 
         public NewsPagesController(ILogger<NewsPagesController> logger)
         {
             _logger = logger;
-            var newsPagesDbBase = new NewsPagesDbBase(new Connection());
-            _newsPagesBase = new NewsPagesBase(newsPagesDbBase.SelectAll().ToList());
+            _newsPagesDbBase = new NewsPagesDbBase(new Connection());
+            _newsPagesBase = new NewsPagesBase(_newsPagesDbBase.SelectAll().ToList());
         }
 
-        [HttpGet( "GetAllPages")]
+        [HttpGet("GetAllPages")]
         public IEnumerable<NewsPagesInfo> Get()
         {
             return _newsPagesBase.NewsPages;
         }
 
-        [HttpGet("Get entites")]
+        [HttpGet("GetEntites")]
         public ICollection<string> GetByEntities(IEnumerable<string> entities)
         {
             return _newsPagesBase.FindByEntitiesNames(entities);
         }
 
-        [HttpGet("Find by word")]
+        [HttpGet("FindByWord")]
         public IEnumerable<string> FindByWordPart(int newsPageId, string value)
         {
             return _newsPagesBase.NewsPages.Where(newsPage => newsPage.Id == newsPageId)
@@ -49,13 +50,19 @@ namespace NewsPagesClientApp.Controllers
                 return;
             }
 
-            _newsPagesBase.Remove(newsPage);
+            _newsPagesDbBase.Delete(newsPage);
         }
 
-        [HttpPost(Name = "Add")]
+        [HttpPost("AddByEntity")]
         public void Add(NewsPagesInfo data)
         {
-            _newsPagesBase.Add(data);
+            _newsPagesDbBase.Insert(data);
+        }
+
+        [HttpPost("AddByUrl")]
+        public void Add(string url)
+        {
+            _newsPagesDbBase.Insert(url);
         }
     }
 }
