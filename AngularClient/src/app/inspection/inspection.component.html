@@ -1,9 +1,10 @@
 Table
 <br>
-  <select>
+  <select [(ngModel)] = "selectedItem$">
     <option *ngFor = "let item of newsPagesList$|async">{{item.title}}</option>
   </select>
 <br>
+{{selectedItem$.id}}
 <!--<select>
   <option value="option-1">option1</option>
   <option value="option-2">option2</option>

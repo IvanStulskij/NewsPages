@@ -12,7 +12,7 @@ export class InspectionApiService {
   constructor(private http: HttpClient) { }
 
   getNewsPage() : Observable<any[]>{
-    return this.http.get<any[]>(this.inpectionApiURL + "/NewsPages")
+    return this.http.get<any[]>(this.inpectionApiURL + "/NewsPages");
   }
 
   addNewsPage(data : any){
