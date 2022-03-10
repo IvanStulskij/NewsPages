@@ -8,8 +8,6 @@ import {Observable} from "rxjs";
   styleUrls: ['./add-edit-inspection.component.css']
 })
 export class AddEditInspectionComponent implements OnInit {
-  baseUrl$!: string;
-  elements$!: Observable<any>;
 
   constructor(private service: InspectionApiService) { }
 

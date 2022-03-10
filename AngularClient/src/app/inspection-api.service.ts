@@ -20,6 +20,18 @@ export class InspectionApiService {
     return this.http$.get<string[]>(this.inpectionApiURL + "/FindByWord?url=" + url +"&value=" + wordPart);
   }
 
+  findPagesByEntity(entity: string){
+    return this.http$.get<any[]>(this.inpectionApiURL + "/FindPagesByEntity?entity=" + entity);
+  }
+
+  findPagesByName(name: string){
+    return this.http$.get<any[]>(this.inpectionApiURL + "/FindByName?name=" + name);
+  }
+
+  findEntitiesAtPage(url: string, entity: string){
+    return this.http$.get<string[]>(this.inpectionApiURL + "/GetEntites?url=" + url +"&entity=" + entity);
+  }
+
   addNewsPage(url : string){
     return this.http$.post( this.inpectionApiURL + "/AddByUrl?url=" + url, url);
   }

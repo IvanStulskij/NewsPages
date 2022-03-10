@@ -11,8 +11,8 @@ import {InspectionApiService} from "../../inspection-api.service";
 export class ShowInspectionComponent implements OnInit {
   newsPagesList$!: Observable<any[]>;
   wordsAtNewsPage$!: Observable<string[]>;
+  entitiesAtNewsPage$!: Observable<string[]>;
   selectedItem$!: any;
-
 
   constructor(private service: InspectionApiService) {
   }
@@ -23,6 +23,18 @@ export class ShowInspectionComponent implements OnInit {
 
   getAll(){
     this.newsPagesList$ = this.service.getNewsPage();
+  }
+
+  getEntitiesAtPage(url: string, entity: string){
+    this.entitiesAtNewsPage$ = this.service.findEntitiesAtPage(url, entity);
+  }
+
+  getPagesByEntity(entity: string){
+    this.newsPagesList$ = this.service.findPagesByEntity(entity);
+  }
+
+  getPagesByName(name: string){
+    this.newsPagesList$ = this.service.findPagesByName(name);
   }
 
   getWordsAtPage(url: string, wordPart: string){

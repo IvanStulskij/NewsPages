@@ -8,8 +8,24 @@
     <input type="text" id="urlWordSearch" name="urlWordSearch" #UrlWordSearch>
     <input type="text" id="wordPartSource" name="wordPartSearch" #wordPartSource>
   </div>
+  <div class="word-search-panel">
+    <button (click)="getEntitiesAtPage(entitiesByPageUrl.value, entitiesByPageEntity.value)">Find entities at page</button>
+    <input type="text" id="entitiesByPageUrl" name="entitiesByPageUrl" #entitiesByPageUrl>
+    <input type="text" id="entitiesByPageEntity" name="wordPartSearch" #entitiesByPageEntity>
+  </div>
+  <div class="word-search-panel">
+    <button (click)="getPagesByEntity(pagesByEntitySearch.value)">Find pages by entity</button>
+    <input type="text" id="pagesByEntitySearchSource" name="wordPartSearch" #pagesByEntitySearch>
+  </div>
+  <div class="word-search-panel">
+    <button (click)="getPagesByName(pageName.value)">Find pages by name</button>
+    <input type="text" id="pageName" name="wordPartSearch" #pageName>
+  </div>
   <select>
     <option  *ngFor = "let item of wordsAtNewsPage$|async">{{item}}</option>
+  </select>
+  <select>
+    <option  *ngFor = "let item of entitiesAtNewsPage$|async">{{item}}</option>
   </select>
 </div>
 <div class="items">
