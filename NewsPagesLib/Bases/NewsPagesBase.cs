@@ -17,6 +17,11 @@ namespace NewsPagesLib.Bases
             return NewsPages.SingleOrDefault(newsPage => newsPage.Id == id);
         }
 
+        public NewsPagesInfo GetByUrl(string url)
+        {
+            return NewsPages.FirstOrDefault(newsPage => newsPage.URL == url);
+        }
+
         public void Add(NewsPagesInfo entity)
         {
             entity.TryMakeOperation(() => NewsPages.Add(entity));
@@ -33,29 +38,41 @@ namespace NewsPagesLib.Bases
             newData.TryMakeOperation(() => NewsPages.Remove(newData));
         }
 
-        public ICollection<string> FindByEntitiesNames(IEnumerable<string> textAttributes)
+        public ICollection<string> FindByEntitiesNames(NewsPagesInfo newsPage, string textAttribute)
         {
             ICollection<string> foundEntites = new List<string>();
+
+            var entities = newsPage.GetEntities();
+
+            var slots = GetEntitySlots(entities, textAttribute);
+
+            return foundEntites.AddEnumerable(slots.ConcatEntity());
+
+        }
+
+        public ICollection<NewsPagesInfo> GetNewsPagesByEntities(string textAttribute)
+        {
+            ICollection<NewsPagesInfo> foundEntites = new List<NewsPagesInfo>();
 
             foreach (var newsPage in NewsPages)
             {
                 var entities = newsPage.GetEntities();
+                var slots = GetEntitySlots(entities, textAttribute).ConcatEntity();
 
-                foreach (var textAttribute in textAttributes)
+                if (slots.Any())
                 {
-                    var slots = GetEntitySlots(entities, textAttribute);
-
-                    foundEntites.AddEnumerable(slots.ConcatEntity());
+                    foundEntites.Add(newsPage);
                 }
             }
 
             return foundEntites;
+            
         }
 
         private IEnumerable<IEnumerable<string>> GetEntitySlots(IEnumerable<Referent> entities, string textAttribute)
         {
             return entities
-                    .Where(entity => entity.TypeName == textAttribute)
+                    .Where(entity => entity.TypeName.ToLower() == textAttribute.ToLower())
                     .Select(entity => entity.Slots)
                     .Select(slotsOfEntity => slotsOfEntity
                         .Select(slot => slot.Value.ToString()));

@@ -9,15 +9,24 @@ import {InspectionApiService} from "../../inspection-api.service";
 })
 
 export class ShowInspectionComponent implements OnInit {
-  constructor(private service: InspectionApiService) { }
+  newsPagesList$!: Observable<any[]>;
+  wordsAtNewsPage$!: Observable<string[]>;
+  selectedItem$!: any;
+
+
+  constructor(private service: InspectionApiService) {
+  }
 
   ngOnInit(): void {
-    this.id = this.newsPage.id;
-    this.text = this.newsPage.text;
-    this.text_html = this.newsPage.text_html;
-    this.title = this.newsPage.title;
-    this.url = this.newsPage.title;
-    this.date = this.newsPage.date;
+    this.getAll();
+  }
+
+  getAll(){
+    this.newsPagesList$ = this.service.getNewsPage();
+  }
+
+  getWordsAtPage(url: string, wordPart: string){
+    this.wordsAtNewsPage$ = this.service.findByWordPart(url, wordPart);
   }
 
   @Input() newsPage: any;

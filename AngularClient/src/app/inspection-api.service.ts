@@ -16,17 +16,12 @@ export class InspectionApiService {
     return this.http$.get<any[]>(this.inpectionApiURL + "/GetAllPages");
   }
 
-  findByWord(newsPageId: number) : Observable<string[]>{
-    return this.http$.get<string[]>(this.inpectionApiURL + "/NewsPages/FindByWord");
+  findByWordPart(url: string, wordPart: string) : Observable<string[]>{
+    return this.http$.get<string[]>(this.inpectionApiURL + "/FindByWord?url=" + url +"&value=" + wordPart);
   }
 
   addNewsPage(url : string){
-    //this.http$.
-    /*this.http({
-      url: this.inpectionApiURL + "/NewsPages",
-      method: "POST"
-    });*/
-    return this.http$.post( this.inpectionApiURL + "/AddByUrl?url=", url);
+    return this.http$.post( this.inpectionApiURL + "/AddByUrl?url=" + url, url);
   }
 
   updateNewsPage(id: number|string, data : any){
@@ -42,6 +37,6 @@ export class InspectionApiService {
   }
 
   deleteByUrl(url: string){
-
+    return this.http$.delete(this.inpectionApiURL + `?url=` + url);
   }
 }

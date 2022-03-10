@@ -24,20 +24,20 @@ namespace NewsPagesClientApp.Controllers
         [HttpGet("GetAllPages")]
         public IEnumerable<NewsPagesInfo> Get()
         {
+            
             return _newsPagesBase.NewsPages;
         }
 
         [HttpGet("GetEntites")]
-        public ICollection<string> GetByEntities(IEnumerable<string> entities)
+        public ICollection<string> GetByEntities(string url, string entity)
         {
-            return _newsPagesBase.FindByEntitiesNames(entities);
+            return _newsPagesBase.FindByEntitiesNames(_newsPagesBase.GetByUrl(url), entity);
         }
 
         [HttpGet("FindByWord")]
-        public IEnumerable<string> FindByWordPart(int newsPageId, string value)
+        public IEnumerable<string> FindByWordPart(string url, string value)
         {
-            return _newsPagesBase.NewsPages.Where(newsPage => newsPage.Id == newsPageId)
-                .FirstOrDefault().FindByWord(value);
+            return _newsPagesBase.GetByUrl(url).FindByWord(value);
         }
 
         [HttpDelete(Name = "Delete")]
@@ -53,11 +53,11 @@ namespace NewsPagesClientApp.Controllers
             _newsPagesDbBase.Delete(newsPage);
         }
 
-        [HttpPost("AddByEntity")]
+        /*[HttpPost("AddByEntity")]
         public void Add(NewsPagesInfo data)
         {
             _newsPagesDbBase.Insert(data);
-        }
+        }*/
 
         [HttpPost("AddByUrl")]
         public void Add(string url)

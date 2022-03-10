@@ -37,7 +37,7 @@ namespace NewsPagesServerLib.Bases
                     Text_html = result.Content.Text,
                     Date = DateTime.Now,
                 };
-                Console.WriteLine(value.Title);
+
                 _connection.DbConnection.Insert(value);
             }
         }
