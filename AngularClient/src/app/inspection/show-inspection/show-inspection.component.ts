@@ -26,19 +26,30 @@ export class ShowInspectionComponent implements OnInit {
   }
 
   getEntitiesAtPage(url: string, entity: string){
-    this.entitiesAtNewsPage$ = this.service.findEntitiesAtPage(url, entity);
+    if (url != "" && entity != ""){
+      this.entitiesAtNewsPage$ = this.service.findEntitiesAtPage(url, entity);
+    }
   }
 
   getPagesByEntity(entity: string){
-    this.newsPagesList$ = this.service.findPagesByEntity(entity);
+    if (entity != ""){
+      this.newsPagesList$ = this.service.findPagesByEntity(entity);
+    }
   }
 
   getPagesByName(name: string){
-    this.newsPagesList$ = this.service.findPagesByName(name);
+    if (name == ""){
+      this.getAll();
+    }
+    else{
+      this.newsPagesList$ = this.service.findPagesByName(name);
+    }
   }
 
   getWordsAtPage(url: string, wordPart: string){
-    this.wordsAtNewsPage$ = this.service.findByWordPart(url, wordPart);
+    if (url != "" && wordPart != "") {
+      this.wordsAtNewsPage$ = this.service.findByWordPart(url, wordPart);
+    }
   }
 
   @Input() newsPage: any;

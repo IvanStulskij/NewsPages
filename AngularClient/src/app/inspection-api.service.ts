@@ -49,6 +49,6 @@ export class InspectionApiService {
   }
 
   deleteByUrl(url: string){
-    return this.http$.delete(this.inpectionApiURL + `?url=` + url);
+    return this.http$.delete(this.inpectionApiURL + `/DeleteByUrl?url=` + url);
   }
 }
