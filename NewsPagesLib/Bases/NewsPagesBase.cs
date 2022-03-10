@@ -1,5 +1,6 @@
 ﻿using NewsPagesLib.Tables;
 using Pullenti.Ner;
+using System.Text.RegularExpressions;
 
 namespace NewsPagesLib.Bases
 {
@@ -36,6 +37,22 @@ namespace NewsPagesLib.Bases
         {
             oldData.TryMakeOperation(() => NewsPages.Remove(oldData));
             newData.TryMakeOperation(() => NewsPages.Remove(newData));
+        }
+
+        public IEnumerable<NewsPagesInfo> FindByName(string name)
+        {
+            ICollection<NewsPagesInfo> searchedPages = new List<NewsPagesInfo>();
+
+            foreach (var newsPage in NewsPages)
+            {
+                var regex = new Regex($@"(\w*){newsPage.Title}(\w*)");
+                if (regex.Matches(name).Any())
+                {
+                    searchedPages.Add(newsPage);
+                }
+            }
+
+            return searchedPages;
         }
 
         public ICollection<string> FindByEntitiesNames(NewsPagesInfo newsPage, string textAttribute)

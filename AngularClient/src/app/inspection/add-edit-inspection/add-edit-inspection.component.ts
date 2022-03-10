@@ -28,8 +28,8 @@ export class AddEditInspectionComponent implements OnInit {
     });
   }
 
-  delete(id: number | string){
-    this.service.deleteById(id as number).subscribe({
+  delete(url: string){
+    this.service.deleteByUrl(url).subscribe({
       next: (result) => {
         alert("news page deleted");
       },
