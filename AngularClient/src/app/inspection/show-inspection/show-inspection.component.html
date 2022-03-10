@@ -1,1 +1,20 @@
-<p>show-inspection works!</p>
+<br>
+<div class="control-panels">
+  <div class="all-selection-panel">
+    <button (click)="getAll()">All items</button>
+  </div>
+  <div class="word-search-panel">
+    <button (click)="getWordsAtPage(UrlWordSearch.value, wordPartSource.value)">Find words</button>
+    <input type="text" id="urlWordSearch" name="urlWordSearch" #UrlWordSearch>
+    <input type="text" id="wordPartSource" name="wordPartSearch" #wordPartSource>
+  </div>
+  <select>
+    <option  *ngFor = "let item of wordsAtNewsPage$|async">{{item}}</option>
+  </select>
+</div>
+<div class="items">
+  <select>
+    <option  *ngFor = "let item of newsPagesList$|async">{{item.title}}</option>
+  </select>
+</div>
+<br>

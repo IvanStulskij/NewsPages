@@ -23,7 +23,7 @@ namespace NewsPagesServerLib.Bases
 
         public void Insert(string Url)
         {
-            if (string.IsNullOrWhiteSpace(Url))
+            if (!string.IsNullOrWhiteSpace(Url))
             {
                 var requester = new UrlRequester(Url);
                 var result = requester.GetPageInfo().Result;

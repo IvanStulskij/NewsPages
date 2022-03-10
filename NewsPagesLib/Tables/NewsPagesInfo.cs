@@ -50,7 +50,7 @@ namespace NewsPagesLib.Tables
         /// <returns></returns>
         public IEnumerable<string> FindByWord(string value)
         {
-            var regex = new Regex($@"(\w*){value}(\w*)");
+            var regex = new Regex($@"(\w*){value.ToLower()}(\w*)");
 
             return regex.Matches(Text.ToLower())
                 .Select(match => match.Value);

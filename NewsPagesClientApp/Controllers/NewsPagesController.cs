@@ -12,18 +12,32 @@ namespace NewsPagesClientApp.Controllers
     {
         private readonly ILogger<NewsPagesController> _logger;
         private readonly NewsPagesBase _newsPagesBase;
+        private readonly NewsPagesDbBase _newsPagesDbBase;
 
         public NewsPagesController(ILogger<NewsPagesController> logger)
         {
             _logger = logger;
-            var newsPagesDbBase = new NewsPagesDbBase(new Connection());
-            _newsPagesBase = new NewsPagesBase(newsPagesDbBase.SelectAll().ToList());
+            _newsPagesDbBase = new NewsPagesDbBase(new Connection());
+            _newsPagesBase = new NewsPagesBase(_newsPagesDbBase.SelectAll().ToList());
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpGet("GetAllPages")]
         public IEnumerable<NewsPagesInfo> Get()
         {
+            
             return _newsPagesBase.NewsPages;
+        }
+
+        [HttpGet("GetEntites")]
+        public ICollection<string> GetByEntities(string url, string entity)
+        {
+            return _newsPagesBase.FindByEntitiesNames(_newsPagesBase.GetByUrl(url), entity);
+        }
+
+        [HttpGet("FindByWord")]
+        public IEnumerable<string> FindByWordPart(string url, string value)
+        {
+            return _newsPagesBase.GetByUrl(url).FindByWord(value);
         }
 
         [HttpDelete(Name = "Delete")]
@@ -36,13 +50,19 @@ namespace NewsPagesClientApp.Controllers
                 return;
             }
 
-            _newsPagesBase.Remove(newsPage);
+            _newsPagesDbBase.Delete(newsPage);
         }
 
-        [HttpPost(Name = "Add")]
+        /*[HttpPost("AddByEntity")]
         public void Add(NewsPagesInfo data)
         {
-            _newsPagesBase.Add(data);
+            _newsPagesDbBase.Insert(data);
+        }*/
+
+        [HttpPost("AddByUrl")]
+        public void Add(string url)
+        {
+            _newsPagesDbBase.Insert(url);
         }
     }
 }

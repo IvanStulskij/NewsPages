@@ -17,7 +17,4 @@ export class InspectionComponent implements OnInit {
     this.newsPagesList$ = this.service.getNewsPage();
   }
 
-  selectedItemChanged(event: any){
-    this.selectedItem$ = event.target.value;
-  }
 }
