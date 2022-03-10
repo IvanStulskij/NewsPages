@@ -24,7 +24,6 @@ namespace NewsPagesClientApp.Controllers
         [HttpGet("GetAllPages")]
         public IEnumerable<NewsPagesInfo> Get()
         {
-            
             return _newsPagesBase.NewsPages;
         }
 
@@ -38,6 +37,18 @@ namespace NewsPagesClientApp.Controllers
         public IEnumerable<string> FindByWordPart(string url, string value)
         {
             return _newsPagesBase.GetByUrl(url).FindByWord(value);
+        }
+
+        [HttpGet("FindPagesByEntity")]
+        public IEnumerable<NewsPagesInfo> FindPagesByEntity(string entity)
+        {
+            return _newsPagesBase.GetNewsPagesByEntities(entity);
+        }
+
+        [HttpGet("FindByName")]
+        public IEnumerable<NewsPagesInfo> FindPagesByName(string name)
+        {
+            return _newsPagesBase.FindByName(name);
         }
 
         [HttpDelete("DeleteById")]
