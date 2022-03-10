@@ -1,17 +1,15 @@
 <form>
   <div class="inspectionForm">
     <div class="addingBtn">
-      <button (click)="addByURL(UrlToAdd.value);">Add</button>
+      <button class="base-button" (click)="addByURL(UrlToAdd.value);">Add</button>
     </div>
-    <label>URL</label>
-    <input type="text" id="UrlToAdd" name="url" #UrlToAdd>
+    <input placeholder="Enter URL" type="text" id="UrlToAdd" name="url" #UrlToAdd>
   </div>
 
   <div class="inspectionForm">
-    <div class="addingBtn">
-      <button (click)="delete(UrlToRemove.value);">Delete</button>
+    <div class="removeBtn">
+      <button class="base-button" (click)="delete(UrlToRemove.value);">Delete</button>
     </div>
-    <label>Url to remove</label>
-    <input type="text" id="UrlToRemove" name="url" #UrlToRemove>
+    <input placeholder="Enter URL" type="text" id="UrlToRemove" name="url" #UrlToRemove>
   </div>
 </form>

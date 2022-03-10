@@ -1,34 +1,33 @@
-<br>
 <div class="control-panels">
   <div class="search-panel">
-    <button class="search-button"  (click)="getAll()">All items</button>
+    <button class="base-button"  (click)="getAll()">All items</button>
   </div>
   <div class="search-panel">
-    <button class="search-button" class="search-button" (click)="getWordsAtPage(UrlWordSearch.value, wordPartSource.value)">Find words</button>
-    <input type="text" id="urlWordSearch" name="urlWordSearch" #UrlWordSearch>
-    <input type="text" id="wordPartSource" name="wordPartSearch" #wordPartSource>
-
-    <select>
+    <button class="base-button" (click)="getWordsAtPage(UrlWordSearch.value, wordPartSource.value)">Find words</button>
+    <input class="base-input" placeholder="Enter url" type="text" id="urlWordSearch" name="urlWordSearch" #UrlWordSearch>
+    <input class="base-input" placeholder="Enter word (or part)" type="text" id="wordPartSource" name="wordPartSearch" #wordPartSource>
+    <br>
+    <select class="base-option">
       <option  *ngFor = "let item of wordsAtNewsPage$|async">{{item}}</option>
     </select>
   </div>
   <div class="search-panel">
-    <button class="search-button" (click)="getEntitiesAtPage(entitiesByPageUrl.value, entitiesByPageEntity.value)">Find entities at page</button>
-    <input type="text" id="entitiesByPageUrl" name="entitiesByPageUrl" #entitiesByPageUrl>
-    <input type="text" id="entitiesByPageEntity" name="wordPartSearch" #entitiesByPageEntity>
-
-    <select>
+    <button class="base-button" (click)="getEntitiesAtPage(entitiesByPageUrl.value, entitiesByPageEntity.value)">Find entities at page</button>
+    <input class="base-input" placeholder="Enter url" type="text" id="entitiesByPageUrl" name="entitiesByPageUrl" #entitiesByPageUrl>
+    <input class="base-input" placeholder="Enter entity (ex. person)" type="text" id="entitiesByPageEntity" name="wordPartSearch" #entitiesByPageEntity>
+    <br>
+    <select class="base-option">
       <option  *ngFor = "let item of entitiesAtNewsPage$|async">{{item}}</option>
     </select>
 
   </div>
   <div class="search-panel">
-    <button class="search-button" (click)="getPagesByEntity(pagesByEntitySearch.value)">Find pages by entity</button>
-    <input type="text" id="pagesByEntitySearchSource" name="wordPartSearch" #pagesByEntitySearch>
+    <button class="base-button" (click)="getPagesByEntity(pagesByEntitySearch.value)">Find pages by entity</button>
+    <input class="base-input" placeholder="Enter entity (ex. person)" type="text" id="pagesByEntitySearchSource" name="wordPartSearch" #pagesByEntitySearch>
   </div>
   <div class="search-panel">
-    <button class="search-button" (click)="getPagesByName(pageName.value)">Find pages by name</button>
-    <input (change)="getPagesByName(pageName.value)" type="text" id="pageName" name="wordPartSearch" #pageName>
+    <button class="base-button" (click)="getPagesByName(pageName.value)">Find pages by name</button>
+    <input class="base-input" placeholder="Enter pages name" (change)="getPagesByName(pageName.value)" type="text" id="pageName" name="wordPartSearch" #pageName>
   </div>
 
 </div>

@@ -1,6 +1,7 @@
-.inspectionForm{
-  text-align: right;
+.search-panel{
+  margin-bottom: 17px;
 }
-.addingBtn{
-  padding-bottom: 10px;
+.base-button{
+  margin: 12px 8px 15px 0;
+  border-radius: 5px;
 }

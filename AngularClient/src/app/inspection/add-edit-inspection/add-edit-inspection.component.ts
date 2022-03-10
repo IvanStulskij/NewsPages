@@ -16,24 +16,28 @@ export class AddEditInspectionComponent implements OnInit {
   }
 
   addByURL(url: string) : void{
-    this.service.addNewsPage(url).subscribe({
-      next: (result) => {
-        alert("news page added");
-      },
-      error: () => {
-        alert("error")
-      }
-    });
+    if (url != ""){
+      this.service.addNewsPage(url).subscribe({
+        next: (result) => {
+          alert("news page added");
+        },
+        error: () => {
+          alert("error")
+        }
+      });
+    }
   }
 
   delete(url: string){
-    this.service.deleteByUrl(url).subscribe({
-      next: (result) => {
-        alert("news page deleted");
-      },
-      error: () => {
-        alert("error")
-      }
-    });
+    if (url != ""){
+      this.service.deleteByUrl(url).subscribe({
+        next: (result) => {
+          alert("news page deleted");
+        },
+        error: () => {
+          alert("error")
+        }
+      });
+    }
   }
 }
