@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {InspectionApiService} from "../../inspection-api.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-add-edit-inspection',
@@ -6,10 +8,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-edit-inspection.component.css']
 })
 export class AddEditInspectionComponent implements OnInit {
+  baseUrl$!: string;
+  elements$!: Observable<any>;
 
-  constructor() { }
+  constructor(private service: InspectionApiService) { }
 
   ngOnInit(): void {
+
   }
 
+  addByURL(url: string) : void{
+    this.service.addNewsPage(url).subscribe({
+      next: (result) => {
+        alert("news page added");
+      },
+      error: () => {
+        alert("error")
+      }
+    });
+  }
+
+  delete(id: number | string){
+    this.service.deleteById(id as number).subscribe({
+      next: (result) => {
+        alert("news page deleted");
+      },
+      error: () => {
+        alert("error")
+      }
+    });
+  }
 }

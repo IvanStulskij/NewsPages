@@ -1,9 +1,17 @@
 <form>
   <div class="inspectionForm">
     <div class="addingBtn">
-      <button>Add</button>
+      <button (click)="addByURL(UrlToAdd.value);">Add</button>
     </div>
     <label>URL</label>
-    <input type="text" name="url">
+    <input type="text" id="UrlToAdd" name="url" #UrlToAdd>
+  </div>
+
+  <div class="inspectionForm">
+    <div class="addingBtn">
+      <button (click)="delete(IdToDelete.value);">Delete</button>
+    </div>
+    <label>ID</label>
+    <input type="text" id="IdToDelete" name="url" #IdToDelete>
   </div>
 </form>
