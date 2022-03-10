@@ -40,7 +40,7 @@ namespace NewsPagesClientApp.Controllers
             return _newsPagesBase.GetByUrl(url).FindByWord(value);
         }
 
-        [HttpDelete(Name = "Delete")]
+        [HttpDelete("DeleteById")]
         public void Delete(int id)
         {
             var newsPage = _newsPagesBase.GetById(id);
@@ -53,11 +53,18 @@ namespace NewsPagesClientApp.Controllers
             _newsPagesDbBase.Delete(newsPage);
         }
 
-        /*[HttpPost("AddByEntity")]
-        public void Add(NewsPagesInfo data)
+        [HttpDelete("DeleteByUrl")]
+        public void DeleteByUrl(string url)
         {
-            _newsPagesDbBase.Insert(data);
-        }*/
+            var newsPage = _newsPagesBase.GetByUrl(url);
+
+            if (newsPage == null)
+            {
+                return;
+            }
+
+            _newsPagesDbBase.Delete(newsPage);
+        }
 
         [HttpPost("AddByUrl")]
         public void Add(string url)
