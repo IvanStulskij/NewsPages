@@ -33,8 +33,42 @@
 </div>
 
 <div class="items">
-  <select>
-    <option  *ngFor = "let item of newsPagesList$|async">{{item.title}}</option>
-  </select>
+  <table>
+    <thead>
+      <th>Id</th>
+      <th>Title</th>
+      <th>URL</th>
+      <th>Date</th>
+      <th>Text</th>
+      <th>Html text</th>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let item of newsPagesList$|async">
+        <td class="items-value">
+          {{item.id}}
+        </td>
+        <td class="title-item items-value">
+          <!--<link rel="alternate" href="{{item.url}}">&ndash;&gt;-->
+          {{item.title}}
+        </td>
+        <td class="items-value">
+          <input readonly class="item-url" value="{{item.url}}" type="text">
+        </td>
+        <td class="items-value">
+          {{item.date}}
+        </td>
+        <td class="items-value">
+          <textarea class="big-text" readonly  id="" cols="30" rows="10">
+            {{item.text}}
+          </textarea>
+        </td>
+        <td class="items-value">
+          <textarea class="big-text" readonly cols="30" rows="10">
+            {{item.text_html}}
+          </textarea>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <br>
