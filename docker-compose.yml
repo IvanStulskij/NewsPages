@@ -1,0 +1,19 @@
+version: '4.8.2'
+
+services:
+  newspagesclientapp:
+    image: ${DOCKER_REGISTRY-}newspagesclientapp
+    build:
+      context: .
+      dockerfile: NewsPagesClientApp\Dockerfile
+
+  jrtech.angular.app:
+    image: ${DOCKER_REGISTRY-}jrtechangularapp
+    build:
+        context: .
+        dockerfile: AngularClient/src/docker/Dockerfile
+    ports:
+        - "4200:4200" 
+        - "62387:62387"
+    volumes:
+        - ./JrTech.Angular.Docker/AngularClient:/app
