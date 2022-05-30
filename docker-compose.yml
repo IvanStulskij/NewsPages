@@ -1,4 +1,4 @@
-version: '4.8.2'
+version: '3.4'
 
 services:
   newspagesclientapp:
@@ -6,14 +6,19 @@ services:
     build:
       context: .
       dockerfile: NewsPagesClientApp\Dockerfile
-
-  jrtech.angular.app:
-    image: ${DOCKER_REGISTRY-}jrtechangularapp
-    build:
-        context: .
-        dockerfile: AngularClient/src/docker/Dockerfile
     ports:
-        - "4200:4200" 
-        - "62387:62387"
-    volumes:
-        - ./JrTech.Angular.Docker/AngularClient:/app
+      - "7092:7092"
+  AngularClient:
+    image: ${DOCKER_REGISTRY-}angular-client
+    build:
+      context: .
+      dockerfile: AngularClient/Dockerfile
+    ports:
+      - "4200:4200" 
+  Pages:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: Ivan
+    ports:
+      - "5432:5432"

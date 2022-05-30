@@ -1,3 +1,5 @@
+@use '../sizes';
+
 .base-button{
   margin: 12px 8px 15px 0;
   border-radius: 5px;
@@ -10,7 +12,7 @@
   margin-right: 12px;
 }
 .title-item{
-  max-width: 200px;
+  max-width: sizes.$titleSize;
 }
 .items-value{
   padding: 12px;
@@ -21,5 +23,5 @@
   outline: none;
 }
 .item-url{
-  max-width: 200px;
+  max-width: sizes.$titleSize;
 }

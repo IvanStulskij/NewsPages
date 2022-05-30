@@ -52,19 +52,6 @@ namespace NewsPagesServerLib
                 PostgreSqlDialect.Provider);
 
             return dbFactory.Open();
-            /*int lastId = db.Select<NewsPagesInfo>()
-                .Select(newsPage => newsPage.Id)
-                .LastOrDefault();
-            Console.WriteLine(lastId);
-            db.Insert(new NewsPagesInfo
-            {
-                Id = lastId + 1,
-                Date = new DateOnly(2008, 08, 13),
-                Text = "Hello, thats Ivan Stulskiy",
-                Text_html = "<html>Hello, thats Ivan Stulskiy</html>",
-                URL = "https",
-                Title = "Title"
-            }) ;*/
         }
     }
 }

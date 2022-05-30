@@ -28,6 +28,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseSpa(spa =>
+{
+    spa.Options.SourcePath = "AngularClient/dist";
+
+    if (app.Environment.IsDevelopment())
+    {
+        spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+    };
+});
+
+
 app.UseHttpsRedirection();
 app.UseCors("_myAllSpecificOrigins");
 app.UseAuthorization();

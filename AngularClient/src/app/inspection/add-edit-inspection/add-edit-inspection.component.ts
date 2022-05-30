@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {InspectionApiService} from "../../inspection-api.service";
 import {Observable} from "rxjs";
 
@@ -18,7 +18,7 @@ export class AddEditInspectionComponent implements OnInit {
   addByURL(url: string) : void{
     if (url != ""){
       this.service.addNewsPage(url).subscribe({
-        next: (result) => {
+        next: () => {
           alert("news page added");
         },
         error: () => {
@@ -31,7 +31,7 @@ export class AddEditInspectionComponent implements OnInit {
   delete(url: string){
     if (url != ""){
       this.service.deleteByUrl(url).subscribe({
-        next: (result) => {
+        next: () => {
           alert("news page deleted");
         },
         error: () => {

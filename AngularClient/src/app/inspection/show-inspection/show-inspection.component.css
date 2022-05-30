@@ -1,0 +1,18 @@
+/* Error: expected ":".
+ *   ,
+ * 1 | $titleSize = 200px;
+ *   |            ^
+ *   '
+ *   ..\sizes.scss 1:12                  @use
+ *   show-inspection.component.scss 1:1  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: expected ":".\a   \2577 \a 1 \2502  $titleSize = 200px;\d\a   \2502             ^\a   \2575 \a   ..\\sizes.scss 1:12                  @use\a   show-inspection.component.scss 1:1  root stylesheet';
+}

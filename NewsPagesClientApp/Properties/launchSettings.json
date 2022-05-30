@@ -11,13 +11,11 @@
   "profiles": {
     "NewsPagesClientApp": {
       "commandName": "Project",
-      "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:7092;http://localhost:5092",
-      "dotnetRunMessages": true
+      "applicationUrl": "https://localhost:7092"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -29,7 +27,6 @@
     },
     "Docker": {
       "commandName": "Docker",
-      "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "publishAllPorts": true,
       "useSSL": true

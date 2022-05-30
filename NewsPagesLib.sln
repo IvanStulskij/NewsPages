@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPagesServerLib", "NewsP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPagesClientApp", "NewsPagesClientApp\NewsPagesClientApp.csproj", "{BF4C0C3C-8B45-41E6-9FE4-FC6A03E00645}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D927DFD4-01D2-4788-9DCE-ED6BBBA2C1FB}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8D4746BE-A38B-4C61-8944-D22BEB6F8C07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{BF4C0C3C-8B45-41E6-9FE4-FC6A03E00645}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF4C0C3C-8B45-41E6-9FE4-FC6A03E00645}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF4C0C3C-8B45-41E6-9FE4-FC6A03E00645}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D927DFD4-01D2-4788-9DCE-ED6BBBA2C1FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D927DFD4-01D2-4788-9DCE-ED6BBBA2C1FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D927DFD4-01D2-4788-9DCE-ED6BBBA2C1FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D927DFD4-01D2-4788-9DCE-ED6BBBA2C1FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D4746BE-A38B-4C61-8944-D22BEB6F8C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D4746BE-A38B-4C61-8944-D22BEB6F8C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D4746BE-A38B-4C61-8944-D22BEB6F8C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D4746BE-A38B-4C61-8944-D22BEB6F8C07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
